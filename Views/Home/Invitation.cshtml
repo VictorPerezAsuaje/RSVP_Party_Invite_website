@@ -1,0 +1,29 @@
+﻿@model RSVP_Party_Invite_website.Models.PartyInvites
+
+@{
+    ViewData["Title"] = "Confirm assistance";
+}
+
+<section class="card card-body text-center d-flex justify-content-center card-invitation">
+    <h1 class="display-4" id="reply-txt">Reply</h1>
+    <p>
+        THE FAVOR OF A REPLY IS REQUESTED <br />
+        ON OR BEFORE JULY 8, 2023
+    </p>
+
+    <form asp-action="Invitation" method="POST" id="assistant-data">
+        <div asp-validation-summary="All"></div>
+        <p>
+            I, <input type="text" name="name" placeholder="Full Name" asp-for="Name" required /><br /><br />
+            confirm that
+            <select asp-for="Confirmation" required>
+                <option value="">Choose option</option>
+                <option value="true">will</option>
+                <option value="false">won't</option>
+            </select>
+            assist.
+        </p>
+        <button type="submit" class="btn btn-outline-primary">SEND</button>
+    </form>
+
+</section>

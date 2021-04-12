@@ -1,37 +1,42 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using RSVP_Party_Invite_website.Models;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace RSVP_Party_Invite_website.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
 
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpGet]
+        public IActionResult Invitation()
         {
+            // Creates a blank form
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpPost]
+        public IActionResult Invitation(PartyInvites willAttend)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            // Stores the answer
+            if (ModelState.IsValid)
+            {
+                AttendeeResponses.AddResponse(willAttend);
+                return View("ThankYou", willAttend);
+            }
+            else {
+                return View();
+            }
         }
+
+        public IActionResult Attendants()
+        {
+            return View(AttendeeResponses.Responses.Where(r => r.Confirmation == true));
+        }
+
     }
 }

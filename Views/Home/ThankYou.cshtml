@@ -1,0 +1,14 @@
+﻿@model RSVP_Party_Invite_website.Models.PartyInvites
+
+@{
+    ViewData["Title"] = "Thank you for your answer ";
+}
+
+<h1>Thank you @Model.Name!</h1>
+
+<p>You said 
+    @{if (Model.Confirmation == true) { 
+            @: you will come, so be prepared for a good party!
+    }else{
+            @:you won't come and I'm deeply sorry to know that, but I hope you assist the next one!
+    }}</p>

@@ -1,8 +1,11 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="card card-body text-center d-flex justify-content-center card-invitation">
+    
+    <h1 class="display-4" id="reply-txt">You have been invited to a party!</h1>
+
+    <h2><a asp-controller="Home" asp-action="Invitation">Respond the invitation here</a></h2>
+    
+</section>

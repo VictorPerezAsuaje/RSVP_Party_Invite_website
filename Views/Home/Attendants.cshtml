@@ -1,0 +1,30 @@
+﻿@model IEnumerable<RSVP_Party_Invite_website.Models.PartyInvites>
+
+@{
+    ViewData["Title"] = "Attendants";
+}
+
+<section class="card card-body text-center">
+    <h1 class="display-4" id="reply-txt">Attendants</h1>
+    <p>This is the current list of attendants to the party</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Confirmed?</th>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var attendee in Model)
+            {
+                <tr>
+                    <td scope="row">I will go!</td>
+                    <td scope="row">@attendee.Name</td>
+                </tr>
+            }
+            
+        </tbody>
+    </table>
+
+</section>
